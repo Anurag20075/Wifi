@@ -19,8 +19,7 @@ import { RiTwitterXFill } from "react-icons/ri";
 const WHATSAPP_NUMBER = "919767979921";
 const PHONE_NUMBER = "+919767979921";
 
-const WHATSAPP_MESSAGE =
-  "Hi AlandiCity Broadband, I need help regarding my fiber connection.";
+const WHATSAPP_MESSAGE = "Hi AlandiCity Broadband, I want to know more about your wifi plans and services.";
 
 const footerLinks = {
   quick: [
@@ -262,9 +261,9 @@ export default function Footer() {
                     </p>
 
                     <p className="mt-1 text-sm font-semibold leading-5 text-white">
-                      123 Tech Park,
-                      <br />
-                      Bangalore, India
+                      Near 8th Gate of Alandi Temple,
+                      Alandi-Dehu Road,
+                      Pune, Maharashtra, India
                     </p>
                   </div>
                 </div>
@@ -294,8 +293,6 @@ export default function Footer() {
         </div>
 
       </div>
-
-      {/* Floating WhatsApp */}
       <div className="group fixed bottom-6 right-6 z-[100] flex flex-col items-end sm:bottom-8 sm:right-8">
 
         <motion.div

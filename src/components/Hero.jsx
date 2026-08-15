@@ -11,10 +11,10 @@ import {
 } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 
-const WHATSAPP_NUMBER = "918482999399";
+const WHATSAPP_NUMBER = "919767979921";
 
 const WHATSAPP_MESSAGE = encodeURIComponent(
-  "Hello! I'm interested in viewing your fiber internet plans."
+ "Hi AlandiCity Broadband, I want to know more about your wifi plans and services."
 );
 
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;

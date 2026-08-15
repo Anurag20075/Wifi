@@ -21,14 +21,10 @@ const NAV_LINKS = [
   { name: "Why Us", id: "why-us" },
 ];
 
-// IMPORTANT:
-// Use country code + number.
-// India: 91 + 10 digit mobile number.
-// Do NOT use +, spaces, or leading 0.
 const WHATSAPP_NUMBER = "919767979921";
 
 const WHATSAPP_MESSAGE =
-  "Hi AlandiCity Broadband, I need help regarding my fiber connection.";
+ "Hi AlandiCity Broadband, I want to know more about your wifi plans and services.";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
