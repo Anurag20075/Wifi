@@ -16,6 +16,12 @@ import {
 
 import { RiTwitterXFill } from "react-icons/ri";
 
+const WHATSAPP_NUMBER = "919767979921";
+const PHONE_NUMBER = "+919767979921";
+
+const WHATSAPP_MESSAGE =
+  "Hi AlandiCity Broadband, I need help regarding my fiber connection.";
+
 const footerLinks = {
   quick: [
     "Home",
@@ -60,9 +66,20 @@ const socialLinks = [
 ];
 
 export default function Footer() {
+  const openWhatsApp = () => {
+    const message = encodeURIComponent(WHATSAPP_MESSAGE);
+
+    window.open(
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
+
   return (
     <footer className="relative overflow-hidden bg-[#050816] text-white">
 
+      {/* Background Glow */}
       <div className="pointer-events-none absolute left-1/2 top-[-220px] h-[520px] w-[720px] -translate-x-1/2 rounded-full bg-blue-500/[0.08] blur-[150px]" />
 
       <div className="pointer-events-none absolute bottom-0 left-[-200px] h-[350px] w-[350px] rounded-full bg-cyan-500/[0.04] blur-[120px]" />
@@ -71,6 +88,7 @@ export default function Footer() {
 
         <div className="grid grid-cols-1 gap-14 md:grid-cols-2 lg:grid-cols-[1.4fr_0.8fr_0.8fr_1.1fr] lg:gap-12 xl:gap-16">
 
+          {/* Brand */}
           <div className="max-w-md">
 
             <div className="mb-6 flex items-center gap-4">
@@ -80,26 +98,28 @@ export default function Footer() {
                 <div className="absolute inset-[1px] rounded-[17px] bg-gradient-to-br from-blue-500 to-cyan-400" />
 
                 <Wifi className="relative z-10 h-7 w-7 text-white" />
+
               </div>
 
               <div>
                 <h2 className="text-[28px] font-black leading-none tracking-[-0.04em]">
-                  FiberNet
+                  AlandiCity
                 </h2>
 
                 <p className="mt-1.5 text-[9px] font-bold uppercase tracking-[0.32em] text-blue-300">
-                  Next Gen Fiber
+                  Broadband
                 </p>
               </div>
 
             </div>
 
             <p className="max-w-[390px] text-[15px] leading-7 text-slate-400">
-              Experience ultra-fast fiber connectivity with reliable speeds,
-              zero buffering, and premium customer support built for modern
-              digital lifestyles.
+              Experience reliable fiber connectivity with fast speeds,
+              smooth streaming, and dependable customer support for
+              your everyday digital needs.
             </p>
 
+            {/* Social Links */}
             <div className="mt-8 flex items-center gap-3">
               {socialLinks.map((social, i) => (
                 <motion.a
@@ -117,8 +137,10 @@ export default function Footer() {
                 </motion.a>
               ))}
             </div>
+
           </div>
 
+          {/* Company */}
           <div>
             <h3 className="mb-6 text-[11px] font-extrabold uppercase tracking-[0.24em] text-white">
               Company
@@ -143,6 +165,7 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Support */}
           <div>
             <h3 className="mb-6 text-[11px] font-extrabold uppercase tracking-[0.24em] text-white">
               Support
@@ -167,6 +190,7 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Contact */}
           <div className="relative overflow-hidden rounded-[24px] border border-white/[0.08] bg-white/[0.035] p-6 backdrop-blur-xl">
 
             <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-blue-500/[0.12] blur-[60px]" />
@@ -186,8 +210,9 @@ export default function Footer() {
 
               <div className="space-y-5">
 
+                {/* Phone */}
                 <a
-                  href="tel:+919767979921"
+                  href={`tel:${PHONE_NUMBER}`}
                   className="group flex items-center gap-3.5"
                 >
                   <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-blue-500/[0.18] bg-blue-500/[0.08] text-blue-400 transition-all duration-300 group-hover:bg-blue-500/[0.15]">
@@ -205,6 +230,27 @@ export default function Footer() {
                   </div>
                 </a>
 
+                {/* WhatsApp */}
+                <button
+                  onClick={openWhatsApp}
+                  className="group flex w-full items-center gap-3.5 text-left"
+                >
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#25D366]/[0.18] bg-[#25D366]/[0.08] text-[#25D366] transition-all duration-300 group-hover:bg-[#25D366]/[0.15]">
+                    <FaWhatsapp size={18} />
+                  </div>
+
+                  <div className="min-w-0">
+                    <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-slate-500">
+                      WhatsApp
+                    </p>
+
+                    <p className="mt-1 text-sm font-semibold text-white transition-colors group-hover:text-[#25D366]">
+                      Chat with us
+                    </p>
+                  </div>
+                </button>
+
+                {/* Address */}
                 <div className="flex items-start gap-3.5">
                   <div className="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-purple-500/[0.18] bg-purple-500/[0.08] text-purple-400">
                     <MapPin size={17} />
@@ -226,14 +272,17 @@ export default function Footer() {
               </div>
             </div>
           </div>
+
         </div>
 
+        {/* Divider */}
         <div className="my-14 h-px bg-gradient-to-r from-transparent via-white/[0.1] to-transparent" />
 
+        {/* Bottom */}
         <div className="flex flex-col gap-4 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
 
           <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500">
-            © 2026 FiberNet Broadband. All Rights Reserved.
+            © 2026 AlandiCity Broadband. All Rights Reserved.
           </p>
 
           <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500">
@@ -241,14 +290,23 @@ export default function Footer() {
             <span className="mx-1 text-sm text-red-500">♥</span>
             in India
           </p>
+
         </div>
+
       </div>
 
-      <div className="fixed bottom-6 right-6 z-[100] flex flex-col items-end sm:bottom-8 sm:right-8">
+      {/* Floating WhatsApp */}
+      <div className="group fixed bottom-6 right-6 z-[100] flex flex-col items-end sm:bottom-8 sm:right-8">
 
         <motion.div
-          initial={{ opacity: 0, y: 6, x: 6 }}
-          whileHover={{ opacity: 1 }}
+          initial={{
+            opacity: 0,
+            y: 6,
+            x: 6,
+          }}
+          whileHover={{
+            opacity: 1,
+          }}
           className="pointer-events-none mb-3 rounded-xl border border-white/[0.08] bg-[#0f172a]/95 px-3.5 py-2.5 opacity-0 shadow-2xl backdrop-blur-xl transition-all duration-300 group-hover:opacity-100"
         >
           <p className="whitespace-nowrap text-xs font-semibold text-white">
@@ -256,17 +314,17 @@ export default function Footer() {
           </p>
         </motion.div>
 
-        <motion.a
-          href="https://wa.me/918482999399"
-          target="_blank"
-          rel="noopener noreferrer"
+        <motion.button
+          onClick={openWhatsApp}
           aria-label="Chat with us on WhatsApp"
           whileHover={{
             scale: 1.08,
             rotate: 4,
           }}
-          whileTap={{ scale: 0.92 }}
-          className="group relative flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-[0_16px_50px_rgba(37,211,102,0.35)] sm:h-16 sm:w-16"
+          whileTap={{
+            scale: 0.92,
+          }}
+          className="relative flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-[0_16px_50px_rgba(37,211,102,0.35)] sm:h-16 sm:w-16"
         >
           <div className="absolute inset-0 animate-ping rounded-full bg-[#25D366] opacity-20" />
 
@@ -274,8 +332,10 @@ export default function Footer() {
             size={30}
             className="relative text-white sm:text-[32px]"
           />
-        </motion.a>
+        </motion.button>
+
       </div>
+
     </footer>
   );
 }

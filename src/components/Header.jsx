@@ -10,7 +10,6 @@ import {
   Wifi,
   Menu,
   X,
-  Phone,
   ArrowRight,
 } from "lucide-react";
 
@@ -22,7 +21,14 @@ const NAV_LINKS = [
   { name: "Why Us", id: "why-us" },
 ];
 
-const WHATSAPP_NUMBER = "918482999399";
+// IMPORTANT:
+// Use country code + number.
+// India: 91 + 10 digit mobile number.
+// Do NOT use +, spaces, or leading 0.
+const WHATSAPP_NUMBER = "919767979921";
+
+const WHATSAPP_MESSAGE =
+  "Hi AlandiCity Broadband, I need help regarding my fiber connection.";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -94,17 +100,17 @@ export default function Header() {
   }, []);
 
   const openWhatsApp = useCallback(() => {
-    const message = encodeURIComponent(
-      "Hi FiberNet, I need help regarding my fiber connection."
-    );
+    const message = encodeURIComponent(WHATSAPP_MESSAGE);
+
+    const whatsappUrl =
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
 
     window.open(
-      `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`,
+      whatsappUrl,
       "_blank",
       "noopener,noreferrer"
     );
   }, []);
-
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen
@@ -118,7 +124,6 @@ export default function Header() {
 
   return (
     <>
-
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -128,12 +133,13 @@ export default function Header() {
         }}
         className={`fixed left-0 right-0 top-0 z-[60] transition-all duration-300 ${
           isScrolled
-            ? "border-b border-gray-200/60 bg-white/75 py-3 shadow-sm backdrop-blur-xl"
+            ? "border-b border-gray-200/60 bg-white/80 py-3 shadow-sm backdrop-blur-xl"
             : "bg-transparent py-5"
         }`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 md:px-8">
 
+          {/* Logo */}
           <button
             onClick={() => scrollToSection("home")}
             className="group flex items-center gap-2.5"
@@ -145,15 +151,16 @@ export default function Header() {
 
             <div className="flex flex-col text-left">
               <span className="text-xl font-bold leading-none tracking-tight text-gray-900">
-                FiberNet
+                AlandiCity
               </span>
 
               <span className="mt-1 text-[9px] font-bold uppercase tracking-[0.2em] text-blue-600">
-                Ultra-Gigabit
+                Broadband
               </span>
             </div>
           </button>
 
+          {/* Desktop Navigation */}
           <nav className="hidden items-center rounded-2xl border border-gray-200/30 bg-gray-100/50 p-1.5 backdrop-blur-sm lg:flex">
             {NAV_LINKS.map((link) => (
               <button
@@ -184,22 +191,23 @@ export default function Header() {
             ))}
           </nav>
 
+          {/* Desktop WhatsApp */}
           <div className="hidden items-center lg:flex">
+            <motion.button
+              onClick={openWhatsApp}
+              whileHover={{ y: -1 }}
+              whileTap={{ scale: 0.97 }}
+              className="group flex items-center gap-2.5 rounded-xl px-3 py-2 text-sm font-semibold text-gray-700 transition-all duration-300 hover:bg-gray-100 hover:text-gray-900"
+            >
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gray-100 transition-all duration-300 group-hover:bg-[#25D366]/10">
+                <FaWhatsapp className="h-4 w-4 text-[#25D366]" />
+              </div>
 
-         <motion.button
-            onClick={openWhatsApp}
-            whileHover={{ y: -1 }}
-            whileTap={{ scale: 0.97 }}
-            className="group flex items-center gap-2.5 rounded-xl px-3 py-2 text-sm font-semibold text-gray-700 transition-all duration-300 hover:bg-gray-100 hover:text-gray-900"
-          >
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gray-100 transition-all duration-300 group-hover:bg-[#25D366]/10">
-              <FaWhatsapp className="h-4 w-4 text-[#25D366]" />
-            </div>
-
-            <span>Support</span>
-          </motion.button>
+              <span>WhatsApp Support</span>
+            </motion.button>
           </div>
 
+          {/* Mobile Menu Button */}
           <motion.button
             whileTap={{ scale: 0.92 }}
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -211,22 +219,43 @@ export default function Header() {
             }
             aria-expanded={mobileOpen}
           >
-            <AnimatePresence mode="wait" initial={false}>
+            <AnimatePresence
+              mode="wait"
+              initial={false}
+            >
               {mobileOpen ? (
                 <motion.div
                   key="close"
-                  initial={{ rotate: -90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: 90, opacity: 0 }}
+                  initial={{
+                    rotate: -90,
+                    opacity: 0,
+                  }}
+                  animate={{
+                    rotate: 0,
+                    opacity: 1,
+                  }}
+                  exit={{
+                    rotate: 90,
+                    opacity: 0,
+                  }}
                 >
                   <X size={22} />
                 </motion.div>
               ) : (
                 <motion.div
                   key="menu"
-                  initial={{ rotate: 90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: -90, opacity: 0 }}
+                  initial={{
+                    rotate: 90,
+                    opacity: 0,
+                  }}
+                  animate={{
+                    rotate: 0,
+                    opacity: 1,
+                  }}
+                  exit={{
+                    rotate: -90,
+                    opacity: 0,
+                  }}
                 >
                   <Menu size={22} />
                 </motion.div>
@@ -236,6 +265,7 @@ export default function Header() {
         </div>
       </motion.header>
 
+      {/* Mobile Navigation */}
       <AnimatePresence>
         {mobileOpen && (
           <>
@@ -260,6 +290,7 @@ export default function Header() {
               className="fixed bottom-0 right-0 top-0 z-[80] flex w-[82%] max-w-sm flex-col bg-white p-6 shadow-2xl sm:p-8"
             >
 
+              {/* Mobile Header */}
               <div className="mb-10 flex items-center justify-between">
 
                 <button
@@ -275,11 +306,11 @@ export default function Header() {
 
                   <div className="flex flex-col text-left">
                     <span className="text-lg font-bold leading-none text-gray-900">
-                      FiberNet
+                      AlandiCity
                     </span>
 
                     <span className="mt-1 text-[8px] font-bold uppercase tracking-[0.18em] text-blue-600">
-                      Ultra-Gigabit
+                      Broadband
                     </span>
                   </div>
                 </button>
@@ -293,8 +324,8 @@ export default function Header() {
                 </button>
               </div>
 
+              {/* Mobile Links */}
               <div className="flex flex-col gap-2.5">
-
                 {NAV_LINKS.map((link, i) => (
                   <motion.button
                     key={link.id}
@@ -330,13 +361,14 @@ export default function Header() {
                     />
                   </motion.button>
                 ))}
-
               </div>
 
+              {/* Mobile Bottom Actions */}
               <div className="mt-auto border-t border-gray-100 pt-8">
 
                 <div className="flex flex-col gap-4">
 
+                  {/* WhatsApp */}
                   <motion.button
                     onClick={openWhatsApp}
                     whileTap={{ scale: 0.98 }}
@@ -359,13 +391,10 @@ export default function Header() {
                     <ArrowRight className="ml-auto h-5 w-5 shrink-0 text-gray-400 transition-all duration-300 group-hover:translate-x-1 group-hover:text-[#25D366]" />
                   </motion.button>
 
+                  {/* CTA */}
                   <motion.button
-                    whileHover={{
-                      y: -2,
-                    }}
-                    whileTap={{
-                      scale: 0.98,
-                    }}
+                    whileHover={{ y: -2 }}
+                    whileTap={{ scale: 0.98 }}
                     onClick={() =>
                       scrollToSection("plans")
                     }
@@ -378,6 +407,7 @@ export default function Header() {
 
                 </div>
               </div>
+
             </motion.div>
           </>
         )}
