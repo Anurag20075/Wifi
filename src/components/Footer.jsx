@@ -9,12 +9,8 @@ import {
 import {
   FaFacebookF,
   FaInstagram,
-  FaYoutube,
-  FaLinkedinIn,
   FaWhatsapp,
 } from "react-icons/fa";
-
-import { RiTwitterXFill } from "react-icons/ri";
 
 const WHATSAPP_NUMBER = "919767979921";
 const PHONE_NUMBER = "+919767979921";
@@ -50,18 +46,7 @@ const socialLinks = [
     color:
       "hover:bg-gradient-to-br hover:from-[#f9ce34] hover:via-[#ee2a7b] hover:to-[#6228d7]",
   },
-  {
-    icon: <RiTwitterXFill size={16} />,
-    color: "hover:bg-white hover:text-black",
-  },
-  {
-    icon: <FaYoutube size={16} />,
-    color: "hover:bg-[#FF0000]",
-  },
-  {
-    icon: <FaLinkedinIn size={16} />,
-    color: "hover:bg-[#0077b5]",
-  },
+
 ];
 
 export default function Footer() {
@@ -261,9 +246,10 @@ export default function Footer() {
                     </p>
 
                     <p className="mt-1 text-sm font-semibold leading-5 text-white">
-                      Near 8th Gate of Alandi Temple,
-                      Alandi-Dehu Road,
-                      Pune, Maharashtra, India
+                   ALANDI CITY NETWORKS PRIVATE LIMITED
+Tanish Vatika, C-803, S. No. 22
+Chorholi Khurd, Pune – Alandi 412105
+Maharashtra, India
                     </p>
                   </div>
                 </div>
